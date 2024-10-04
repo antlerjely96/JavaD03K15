@@ -5,4 +5,5 @@ public abstract class Hinh2D implements HinhHoc{
     public double dienTich;
     public abstract double tinhChuVi();
     public abstract double tinhDienTich();
+    public abstract void hienThi();
 }
