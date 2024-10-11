@@ -70,4 +70,21 @@ public class Brand {
         //Đóng kết nối
         DatabaseConnection.closeConnection(connection);
     }
+
+    //Method để thêm mới một brand
+    public void addBrand() throws SQLException {
+        //Kết nối DB
+        Connection connection = DatabaseConnection.openConnection();
+        //Lấy dữ liệu được nhập vào từ bàn phím
+        String name = this.name;
+        String country = this.country;
+        //Viết sql để thêm dữ liệu lên db
+        String sql = "INSERT INTO brands(name, country) VALUES ('" + name + "', '" + country + "')";
+        //Tạo Statement
+        Statement statement = connection.createStatement();
+        //Chạy sql
+        statement.executeUpdate(sql);
+        //Đóng kết nối
+        DatabaseConnection.closeConnection(connection);
+    }
 }
