@@ -7,15 +7,9 @@ public class DatabaseConnection {
     private static final String user = "root";
     private static final String password = "";
 
-    public Connection openConnection(){
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(host, user, password);
-            System.out.println("Kết nối database thành công");
-        } catch (Exception e) {
-            System.out.println("Kết nối database thất bại");
-        }
-        return connection;
+    //Tạo kết nối đến db
+    public static Connection openConnection() throws SQLException {
+            return DriverManager.getConnection(host, user, password);
     }
 
     public static void closeConnection(Connection connection) throws SQLException {
