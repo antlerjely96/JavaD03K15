@@ -87,4 +87,33 @@ public class Brand {
         //Đóng kết nối
         DatabaseConnection.closeConnection(connection);
     }
+
+    //Method để cập nhật thông tin của một brand
+    public void updateBrand(int id) throws SQLException {
+        //Kết nối DB
+        Connection connection = DatabaseConnection.openConnection();
+        //Lấy dữ liệu được nhập vào
+        String name = this.name;
+        String country = this.country;
+        //Viết query update bản ghi có id được chọn
+        String sql = "UPDATE brands SET name = '" + name + "', country = '" + country + "' WHERE id = '" + id + "'";
+        //Chạy query
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(sql);
+        //Đóng kết nối
+        DatabaseConnection.closeConnection(connection);
+    }
+
+    //Method để xóa một brand
+    public void deleteBrand(int id) throws SQLException {
+        //Kết nối DB
+        Connection connection = DatabaseConnection.openConnection();
+        //Viết query để xóa bản ghi với id vừa được nhập
+        String sql = "DELETE FROM brands WHERE id = '" + id + "'";
+        //Chạy query
+        Statement statement = connection.createStatement();
+        statement.executeUpdate(sql);
+        //Đóng kết nối
+        DatabaseConnection.closeConnection(connection);
+    }
 }
