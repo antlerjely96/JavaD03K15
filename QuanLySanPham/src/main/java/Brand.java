@@ -116,4 +116,31 @@ public class Brand {
         //Đóng kết nối
         DatabaseConnection.closeConnection(connection);
     }
+
+    //Method search by id
+    public void searchBrandById(int id) throws SQLException {
+        //Kết nối DB
+        Connection connection = DatabaseConnection.openConnection();
+        //Viết sql để tìm kiếm bản ghi với id vừa được nhập
+        String sql = "SELECT * FROM brands WHERE id = '" + id + "'";
+        //Chạy query
+        Statement statement = connection.createStatement();
+        ResultSet results = statement.executeQuery(sql);
+        //Đếm số lượng bản ghi
+        if(results != null && results.next()){
+            //Hiển thị được dữ liệu vừa lấy được
+            while (results.next()){
+                //Lấy name
+                String name = results.getString("name");
+                //Lấy country
+                String country = results.getString("country");
+                //Hiển thị bản ghi vừa lấy được
+                System.out.println("Brand id: " + id + ", brand name: " + name + ", brand country: " + country);
+            }
+        } else {
+            System.out.println("Brand not found!");
+        }
+        //Đóng kết nối
+        DatabaseConnection.closeConnection(connection);
+    }
 }
