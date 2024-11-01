@@ -132,6 +132,7 @@ public class Product {
         //Viet Query
         String sql = "SELECT products.*, brands.name AS brand_name FROM products INNER JOIN brands" +
                 " ON products.brand_id = brands.id WHERE products.brand_id = '" + brandId + "'";
+
         //Chay query
         Statement statement = connection.createStatement();
         ResultSet results = statement.executeQuery(sql);
