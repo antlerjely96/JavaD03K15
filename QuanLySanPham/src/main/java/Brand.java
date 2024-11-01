@@ -126,19 +126,14 @@ public class Brand {
         //Chạy query
         Statement statement = connection.createStatement();
         ResultSet results = statement.executeQuery(sql);
-        //Đếm số lượng bản ghi
-        if(results != null && results.next()){
-            //Hiển thị được dữ liệu vừa lấy được
-            while (results.next()){
-                //Lấy name
-                String name = results.getString("name");
-                //Lấy country
-                String country = results.getString("country");
-                //Hiển thị bản ghi vừa lấy được
-                System.out.println("Brand id: " + id + ", brand name: " + name + ", brand country: " + country);
-            }
-        } else {
-            System.out.println("Brand not found!");
+        //Hiển thị được dữ liệu vừa lấy được
+        while (results.next()){
+            //Lấy name
+            String name = results.getString("name");
+            //Lấy country
+            String country = results.getString("country");
+            //Hiển thị bản ghi vừa lấy được
+            System.out.println("Brand id: " + id + ", brand name: " + name + ", brand country: " + country);
         }
         //Đóng kết nối
         DatabaseConnection.closeConnection(connection);
